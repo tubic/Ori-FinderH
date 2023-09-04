@@ -90,6 +90,13 @@ class ZCoding:
         return result_list
     
 
+def for_ga(sequence):
+    list_1 = []
+    for num in [1, 2, 3]:
+        list_1 += ZCoding(sequence=sequence, z_number=num).coding() + ZCoding(sequence=sequence, z_number=num).codingPhase()
+    return list_1
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("-fasta", "--fasta_path", help="Sequence file in fasta format", type=str)
