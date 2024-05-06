@@ -175,14 +175,14 @@ class ZCoding:
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("-fasta", "--fasta_path", help="Sequence file in fasta format", type=str)
-    parser.add_argument("-out", "--output_path", help="Result will save in this path",  type=str, default="")
+    parser.add_argument("-out", "--output_path", help="Result will save in this path",  type=str, default="out.txt")
     parser.add_argument("-model_path", "--model_path", help="Please enter model path",  type=str, default="ori_finder_h.pkl")
     args = parser.parse_args()
     sequence_file_path = args.fasta_path
     save_file_path     = args.output_path
     save_file          = open(save_file_path, "w", encoding="UTF-8")
     sequence_list      = list(SeqIO.parse(sequence_file_path, "fasta"))
-    ori_finder_h       = torch.load(args.output_path, map_location="cpu")
+    ori_finder_h       = torch.load(args.model_path, map_location="cpu")
     for seq_num, seq in enumerate(sequence_list):
         print(f"Test sequence num:[{seq_num+1}/{len(sequence_list)}].")
         coded_list  = []
